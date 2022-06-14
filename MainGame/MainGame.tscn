@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Audio/backgroundMusic.wav" type="AudioStream" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://MainGame/MainGame.gd" type="Script" id=4]
 [ext_resource path="res://Enemy/Enemies.gd" type="Script" id=5]
+[ext_resource path="res://Button.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20.9622, 380.576 )
@@ -13,25 +14,39 @@ extents = Vector2( 20.9622, 380.576 )
 extents = Vector2( 662.058, 10 )
 
 [node name="MainGame" type="Control"]
-margin_left = -0.768188
-margin_top = 1.23187
-margin_right = 1279.23
-margin_bottom = 721.232
+anchor_left = 0.144
+anchor_top = 0.263
+anchor_right = 0.144
+anchor_bottom = 0.263
+margin_left = -169.32
+margin_top = -155.36
+margin_right = 1110.68
+margin_bottom = 564.64
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Main Menu" type="VBoxContainer" parent="."]
+margin_left = -1.99998
+margin_top = -22.0
+margin_right = 1289.0
+margin_bottom = 745.0
 
 [node name="HUD" type="HBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = 9.0
+margin_top = -16.0
+margin_right = 1269.0
+margin_bottom = 742.0
+
+[node name="ReurnMainMenu" type="Button" parent="HUD"]
+margin_right = 12.0
+margin_bottom = 758.0
+script = ExtResource( 6 )
+scene_to_load = "Title Screen.tscn"
 
 [node name="Countdown" type="Label" parent="HUD"]
-margin_top = 13.0
-margin_bottom = 27.0
+margin_left = 16.0
+margin_top = 372.0
+margin_right = 16.0
+margin_bottom = 386.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -40,14 +55,15 @@ __meta__ = {
 position = Vector2( -1.53629, 369.479 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border_Left"]
-position = Vector2( -5.37704, -0.768158 )
+position = Vector2( -3.46371, -11.479 )
+scale = Vector2( 0.986989, 1.00778 )
 shape = SubResource( 1 )
 
 [node name="Border_Right" type="Area2D" parent="." groups=["right"]]
 position = Vector2( 1287.42, 368.711 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border_Right"]
-position = Vector2( -5.37704, -0.768158 )
+position = Vector2( -7.42001, -8.711 )
 shape = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
@@ -57,18 +73,18 @@ position = Vector2( 642.94, 669.056 )
 position = Vector2( 646.934, -31.955 )
 
 [node name="TopCollider" type="CollisionShape2D" parent="Border_Top" groups=["top"]]
-position = Vector2( 0, 1 )
+position = Vector2( -9.93402, 2.955 )
 shape = SubResource( 2 )
 
 [node name="Border_Bottom" type="KinematicBody2D" parent="." groups=["bottom"]]
 position = Vector2( 646.934, 748.484 )
 
 [node name="TopCollider" type="CollisionShape2D" parent="Border_Bottom" groups=["top"]]
-position = Vector2( 0, 1 )
+position = Vector2( -5.93402, 3.51599 )
 shape = SubResource( 2 )
 
 [node name="Enemies" type="Node2D" parent="."]
-position = Vector2( 705.16, 3.84076 )
+position = Vector2( 741, 14 )
 script = ExtResource( 5 )
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 3 )]
